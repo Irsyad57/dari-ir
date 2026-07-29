@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk [Nama Teman] 🎂</title>
+<link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+<link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap)" rel="stylesheet">
+<style>
+  :root{
+    --pink:#f7cad9;
+    --lavender:#d8c9f0;
+    --peach:#ffe0c2;
+    --gold:#d4a35d;
+    --cream:#fffaf3;
+    --dark:#3a2e35;
+    --shadow: 0 20px 40px rgba(58,46,53,0.08);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:'Poppins', sans-serif;
+    color:var(--dark);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+
+  h1,h2{ font-family:'Playfair Display', serif; }
+
+  .container{
+    max-width:820px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  .center{ text-align:center; }
+
+  .section{ padding:110px 0; position:relative; }
+
+  .section-tag{
+    display:inline-block;
+    font-size:0.8rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:14px;
+  }
+
+  .section h2{ font-size:2.2rem; margin-bottom:20px; }
+
+  .section p{ font-size:1.05rem; line-height:1.9; color:#5a4a52; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    background:linear-gradient(-45deg, var(--pink), var(--peach), var(--lavender), var(--pink));
+    background-size:400% 400%;
+    animation:gradientShift 14s ease infinite;
+  }
+
+  @keyframes gradientShift{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+
+  #floating-hearts{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+
+  .heart{
+    position:absolute;
+    bottom:-10%;
+    font-size:1.5rem;
+    opacity:0.9;
+    animation:floatUp linear forwards;
+  }
+
+  @keyframes floatUp{
+    to{ transform:translateY(-110vh) rotate(360deg); opacity:0; }
+  }
+
+  .hero-content{ position:relative; z-index:2; padding:0 20px; }
+
+  .hero-eyebrow{
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:0.85rem;
+    color:#6b5560;
+    margin-bottom:16px;
+  }
+
+  .hero-title{
+    font-size:clamp(2.8rem, 8vw, 5rem);
+    font-weight:700;
+    color:var(--dark);
+    margin-bottom:10px;
+  }
+
+  .hero-subtitle{
+    font-size:1.3rem;
+    color:#6b5560;
+    margin-bottom:50px;
+  }
+
+  .scroll-btn{
+    display:inline-block;
+    text-decoration:none;
+    color:var(--dark);
+    border:1.5px solid var(--dark);
+    padding:12px 28px;
+    border-radius:40px;
+    font-size:0.9rem;
+    transition:all 0.3s ease;
+  }
+
+  .scroll-btn:hover{
+    background:var(--dark);
+    color:var(--cream);
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:all 0.9s ease;
+  }
+  .reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  /* ---------- MOMENT CARDS ---------- */
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:24px;
+    margin-top:40px;
+  }
+
+  .card{
+    background:#fff;
+    border-radius:18px;
+    padding:32px 24px;
+    box-shadow:var(--shadow);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 30px 50px rgba(58,46,53,0.12);
+  }
+
+  .card-icon{ font-size:2rem; margin-bottom:14px; }
+
+  .card h3{ font-size:1.15rem; margin-bottom:10px; }
+
+  .card p{ font-size:0.95rem; }
+
+  /* ---------- LETTER ---------- */
+  .letter-section{ background:linear-gradient(180deg, var(--cream), #fdf2f6); }
+
+  .envelope{
+    display:inline-block;
+    cursor:pointer;
+    background:#fff;
+    border-radius:16px;
+    padding:40px 60px;
+    box-shadow:var(--shadow);
+    margin-top:20px;
+    transition:transform 0.3s ease;
+  }
+
+  .envelope:hover{ transform:scale(1.03); }
+
+  .envelope-icon{
+    font-size:2.6rem;
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes pulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.1); }
+  }
+
+  .envelope p{ margin-top:10px; font-size:0.9rem; color:#8a7580; }
+
+  .letter{
+    max-width:600px;
+    margin:0 auto;
+    max-height:0;
+    overflow:hidden;
+    opacity:0;
+    transition:all 1s ease;
+    text-align:left;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+  }
+
+  .letter.open{
+    max-height:900px;
+    opacity:1;
+    margin-top:36px;
+    padding:44px;
+  }
+
+  .letter p{
+    font-family:'Playfair Display', serif;
+    font-size:1.15rem;
+    line-height:2;
+    margin-bottom:20px;
+    color:var(--dark);
+  }
+
+  .letter .signature{
+    text-align:right;
+    font-style:italic;
+    color:var(--gold);
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px, 1fr));
+    gap:16px;
+    margin-top:36px;
+  }
+
+  .gallery-item{
+    aspect-ratio:1/1;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+
+  .gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform 0.4s ease;
+  }
+
+  .gallery-item:hover img{ transform:scale(1.08); }
+
+  /* ---------- CLOSING ---------- */
+  .closing{
+    background:linear-gradient(160deg, var(--lavender), var(--pink));
+    text-align:center;
+  }
+
+  .closing h2{ font-size:2.4rem; margin-bottom:16px; }
+
+  .candle-btn{
+    margin-top:30px;
+    padding:16px 40px;
+    font-size:1rem;
+    border:none;
+    border-radius:50px;
+    background:var(--dark);
+    color:var(--cream);
+    cursor:pointer;
+    transition:transform 0.25s ease;
+  }
+
+  .candle-btn:hover{ transform:scale(1.06); }
+
+  #confetti-canvas{
+    position:fixed;
+    top:0; left:0;
+    pointer-events:none;
+    z-index:9999;
+    display:none;
+  }
+
+  footer{
+    text-align:center;
+    padding:36px 20px;
+    font-size:0.85rem;
+    color:#8a7580;
+    background:var(--cream);
+  }
+
+  @media(max-width:600px){
+    .section{ padding:80px 0; }
+    .envelope{ padding:30px 34px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div id="floating-hearts"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Sebuah Hadiah Kerandoman Yang Tak Terduga Untuk</p>
+      <h1 class="hero-title">Liaa Atau Biasa Dipanggil Jupee</h1>
+      <p class="hero-subtitle">Selamat Ulang Tahun 🎉</p>
+      <a href="#cerita" class="scroll-btn">Scroll ke bawah ↓</a>
+    </div>
+  </section>
+
+  <!-- CERITA -->
+  <section id="cerita" class="section">
+    <div class="container center reveal">
+      <span class="section-tag"> Geser Ke Bawah</span>
+      <h2>Lebih terpatnya kado ngga terduga wkwk</h2>
+      <p>
+        Trimakasii yaa wes bantu aku ngerjakan soal excel wkwk, jangan lupa traktirannyaaa HAHAH
+      </p>
+    </div>
+  </section>
+
+  <!-- MOMEN -->
+  <section class="section" style="background:#fdf6f2;">
+    <div class="container reveal">
+      <span class="section-tag">Sekali lagi thx</span>
+      <h2>Untuk ini</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <h3>Mbantu Tes Excel</h3>
+          <p>Makasih udah bantu huhu</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🍜</div>
+          <h3>Trus gelem ta jak kulineran</h3>
+          <p>GASS nambah bb wkwk</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <h3>TRIMSS</h3>
+          <p>Ga ngerti ya opo mane makasi dan selamat bertambah tua yeyy</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SURAT -->
+  <section id="surat" class="section letter-section">
+    <div class="container center reveal">
+      <span class="section-tag">Untukmu</span>
+      <h2>Surat</h2>
+
+      <div class="envelope" id="envelope" onclick="openLetter()">
+        <div class="envelope-icon">💌</div>
+        <p>Klik untuk membuka</p>
+      </div>
+
+      <div class="letter" id="letter">
+        <p>Dari ir,</p>
+        <p>
+          makasi wes disuduhno mie ayam terenak wkwk, and jangan lupa SHOLATTT
+        </p>
+        <p class="signature">— Irr</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="section closing">
+    <div class="container reveal">
+      <h2>Selamat Ulang Tahun, Liaa! 🎂</h2>
+      <p>Semoga keinginane semua tercapai tak bantu meng aamiin kann</p>
+      <button class="candle-btn" onclick="blowConfetti()">🕯️ Tiup Lilin</button>
+    </div>
+  </section>
+
+  <canvas id="confetti-canvas"></canvas>
+
+  <footer>
+    Dibuat dengan effort (dan sedikit begadang) oleh <strong>irr wkkw</strong>
+  </footer>
+
+<script>
+  // Floating hearts di hero
+  function createHeart(){
+    const container = document.getElementById('floating-hearts');
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = Math.random()*100 + '%';
+    heart.style.fontSize = (Math.random()*1.2 + 0.9) + 'rem';
+    heart.style.animationDuration = (Math.random()*3 + 5) + 's';
+    heart.innerText = ['✨','🌸'][Math.floor(Math.random()*2)];
+    container.appendChild(heart);
+    setTimeout(() => heart.remove(), 8500);
+  }
+  setInterval(createHeart, 550);
+
+  // Reveal on scroll
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Buka surat
+  function openLetter(){
+    document.getElementById('envelope').style.display = 'none';
+    document.getElementById('letter').classList.add('open');
+  }
+
+  // Confetti sederhana (tanpa library)
+  function blowConfetti(){
+    const canvas = document.getElementById('confetti-canvas');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.display = 'block';
+    const ctx = canvas.getContext('2d');
+    const colors = ['#f7cad9','#d8c9f0','#d4a35d','#fffaf3','#ff8fab'];
+    let particles = [];
+
+    for(let i=0; i<150; i++){
+      particles.push({
+        x: canvas.width/2,
+        y: canvas.height*0.65,
+        r: Math.random()*6+4,
+        color: colors[Math.floor(Math.random()*colors.length)],
+        vx: (Math.random()-0.5)*16,
+        vy: (Math.random()-1.4)*16,
+        life: 100
+      });
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      particles.forEach(p => {
+        p.vy += 0.35;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life--;
+        ctx.globalAlpha = Math.max(p.life/100, 0);
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+        ctx.fill();
+      });
+      particles = particles.filter(p => p.life > 0);
+      if(particles.length > 0){
+        requestAnimationFrame(animate);
+      } else {
+        canvas.style.display = 'none';
+      }
+    }
+    animate();
+  }
+</script>
+</body>
+</html>
